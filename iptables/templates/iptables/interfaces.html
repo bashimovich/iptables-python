@@ -1,0 +1,167 @@
+{% extends "main.html" %}
+{% block title %}All Rules{% endblock %}
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+	<div class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6">
+				</div><!-- /.col -->
+				<div class="col-sm-6">
+					<ol class="breadcrumb float-sm-right">
+						<li class="breadcrumb-item"><a href="#">Home</a></li>
+						<li class="breadcrumb-item active">All Rules</li>
+					</ol>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
+	</div>
+	<!-- /.content-header -->
+
+	<!-- Main content -->
+	<div class="content">
+		<div class="container-fluid">
+			<div class="row">
+
+				<!-- /.col-md-6 -->
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="m-0">{{ interface}} Rules</h5>
+						</div>
+						<div class="card-body">
+							<section class="content">
+								<!-- Default box -->
+								<div class="card">
+									<div class="card-body p-0">
+										<table class="table table-striped projects">
+											<thead>
+												<tr>
+													<th>
+														#
+													</th>
+													<th>
+														Pkts
+													</th>
+													<th>
+														Bytes
+													</th>
+													<th>
+														Target
+													</th>
+													<th>
+														Prot
+													</th>
+													<th>
+														Opt
+													</th>
+													<th>
+														Interface
+													</th>
+													<th>
+														Out
+													</th>
+													<th>
+														Source
+													</th>
+													<th>
+														Destination
+													</th>
+													<th>
+														Protocol
+													</th>
+													<th>
+														DPort
+													</th>
+													<th class="text-center">
+														Chain
+													</th>
+													<th>
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for rule in rules %}
+												<tr>
+													<td>
+														{{ rule.id }}
+													</td>
+													<td>
+														{{ rule.pkts }}
+													</td>
+													<td>
+														{{ rule.bytes }}
+													</td>
+													<td>
+														{{ rule.target }}
+													</td>
+													<td>
+														{{ rule.prot }}
+													</td>
+													<td>
+														{{ rule.opt }}
+													</td>
+													<td>
+														{{ rule.inn }}
+													</td>
+													<td>
+														{{ rule.out }}
+													</td>
+													<td>
+														{{ rule.source }}
+													</td>
+													<td>
+														{{ rule.destination }}
+													</td>
+													<td>
+														{{ rule.p }}
+													</td>
+													<td>
+														{{ rule.dport }}
+													</td>
+													<td class="project-state">
+														<span class="badge badge-success">{{ rule.chain }}</span>
+													</td>
+													<td class="project-actions text-right">
+														<form action="/delete/{{ rule.chain }}/{{ rule.rule_id }}"
+															method="post">
+															{% csrf_token %}
+															<a class="btn btn-info btn-sm" value="edit">
+																<i class="fas fa-pencil-alt">
+																</i>
+																Edit
+															</a>
+															<button class="btn btn-danger btn-sm" value="delete">
+																<i class="fas fa-trash">
+																</i>
+																Delete
+															</button>
+														</form>
+													</td>
+													{% endfor %}
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!-- /.card-body -->
+								</div>
+								<!-- /.card -->
+
+							</section>
+						</div>
+
+					</div>
+				</div>
+				<!-- /.col-md-6 -->
+			</div>
+			<!-- /.row -->
+		</div><!-- /.container-fluid -->
+	</div>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock %}

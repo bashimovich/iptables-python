@@ -1,0 +1,16 @@
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            192.168.100.101     
+    0     0 ACCEPT     tcp  --  *      *       192.168.100.0/24     0.0.0.0/0           
+    0     0 DROP       tcp  --  *      *       0.0.0.0/0            192.168.100.101     
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            192.168.100.101     
+    0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    8   400 ACCEPT     tcp  --  *      *       0.0.0.0/0           !192.168.100.101     
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            192.168.100.101     
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            192.168.100.101     
